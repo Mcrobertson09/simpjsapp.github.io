@@ -1,14 +1,19 @@
-alert('Hello world');
 
-let favFood = 'Pizza';
-let secFavFood = 'Hamburgers'
+let pokemonList = [
+    {
+    name: 'bulbasaur', 
+    type: ['grass', 'poison'],  
+    HP: 45, 
+    Atack: 49, 
+    height: 0.7
+    },
+    {name: 'squirtle', type: 'water',  HP: 44, Atack: 49, height: 0.5},
+    {name: 'charmander', type: 'fire',  HP: 39, Atack: 52, height: 0.6},
+    {name: 'pikachu', type: 'electric',  HP: 35, Atack: 55, height: 0.4}
+]
 
-let person = {
-    name: 'Matthew Robertson',
-    phone: '480-272-1084',
-    city: 'gilbert',
-    state: 'AZ'
-}
-
-document.write("My Favorite food is: ", favFood,  "i also like ", secFavFood, " as a close second");
-document.write(" my name is ", person.name, " I live in ", person.city, ",", person.state)
+pokemonList.forEach(pokemonList => {
+    for (let pokemon in pokemonList) {
+        document.write(`${pokemon}: ${pokemonList[pokemon]}`);
+    }
+})
