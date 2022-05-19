@@ -5,6 +5,17 @@ let pokemonList = [
     {id: 4, name: 'pikachu', type: 'electric',  HP: 35, Attack: 55, height: 0.4}
 ];
 
+    // for(i = 0; i < pokemonList.length; i++){
+    //     document.write('</br>Name: ' + pokemonList[i].name + " " + "( height: " + pokemonList[i].height + ")");
+    //     if (pokemonList[i].height >= 1.0) {
+    //         document.write("- WOW! Thats BIG!!");
+    //     }
+    // }
+
+    pokemonList.forEach(arrayList => document.write(arrayList));
+
+
+
 function tableCall(){
 
     let pokeTable = "<table border='1|1'>";
@@ -21,9 +32,6 @@ function tableCall(){
     pokeTable += '</thead>';
 
     for (i=0; i < pokemonList.length; i++){
-        if (pokemonList[i].height >= 1.0) {
-            document.write("WOW! Thats BIG!!");
-        }
         pokeTable += '<tr>';
         pokeTable += '<td>' + pokemonList[i].id + '</td>';
         pokeTable += '<td>' + pokemonList[i].name + '</td>';
