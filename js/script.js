@@ -1,50 +1,61 @@
-let pokemonList = [
+//IIFE 
+let pokemonRepository = (function (){
+    let pokemonList = [  
     {id: 1, name: 'bulbasaur', type: ['grass', 'poison'],  HP: 45, Attack: 49, height: 1.0},
-    {id: 2, name: 'squirtle', type: 'water',  HP: 44, Attack: 49, height: 0.5},
-    {id: 3, name: 'charmander', type: 'fire',  HP: 39, Attack: 52, height: 1.7},
-    {id: 4, name: 'pikachu', type: 'electric',  HP: 35, Attack: 55, height: 0.4}
-];
+    {id: 2, name: 'squirtle', type: ['water'],  HP: 44, Attack: 49, height: 0.5},
+    {id: 3, name: 'charmander', type:['fire'],  HP: 39, Attack: 52, height: 1.7},
+    {id: 4, name: 'pidgey', type: ['normal', 'flying'],  HP: 35, Attack: 55, height: 1.0}];
 
-    // for(i = 0; i < pokemonList.length; i++){
-    //     document.write('</br>Name: ' + pokemonList[i].name + " " + "( height: " + pokemonList[i].height + ")");
-    //     if (pokemonList[i].height >= 1.0) {
-    //         document.write("- WOW! Thats BIG!!");
-    //     }
-    // }
-
-    pokemonList.forEach(arrayList => document.write(arrayList));
-
-
-
-function tableCall(){
-
-    let pokeTable = "<table border='1|1'>";
-    
-    pokeTable += '<thead>';
-    pokeTable += '<tr>';
-    pokeTable += '<td>' + "ID" + '</td>';
-    pokeTable += '<td>' + "Name" + '</td>';
-    pokeTable += '<td>' + "Type" + '</td>';
-    pokeTable += '<td>' + "HP" + '</td>';
-    pokeTable += '<td>' + "Attack" + '</td>';
-    pokeTable += '<td>' + "Height" + '</td>';
-    pokeTable += '</tr>';
-    pokeTable += '</thead>';
-
-    for (i=0; i < pokemonList.length; i++){
-        pokeTable += '<tr>';
-        pokeTable += '<td>' + pokemonList[i].id + '</td>';
-        pokeTable += '<td>' + pokemonList[i].name + '</td>';
-        pokeTable += '<td>' + pokemonList[i].type + '</td>';
-        pokeTable += '<td>' + pokemonList[i].HP + '</td>';
-        pokeTable += '<td>' + pokemonList[i].Attack + '</td>'; 
-        pokeTable += '<td>' + pokemonList[i].height + '</td>';
-        pokeTable += '</tr>';
+    function add(pokemon){
+        if (
+            typeof pokemon === 'object' &&
+            'name' in pokemon
+          ) {
+            pokemonList.push(pokemon);
+          } else {
+            console.log("Enter correct pokemon data");
+          }
     }
-    document.getElementById("table").innerHTML = pokeTable;
-}
 
+    function getAll() {
+        return pokemonList;
+    }
 
+    return {
+        add: add,
+        getAll: getAll
+    };
+})()
 
-tableCall();
+// Calling the GetAll to find respoitory Data
+pokemonRepository.getAll().forEach(Poke => {
+    document.write('</br>' + Poke.name + ': ' 
+                    + '</br>attack: ' + Poke.Attack + ' '
+                    + '</br>type: ' + Poke.type + ' '
+                    + '</br>hp: ' + Poke.HP + ' '
+                    + '</br>height: ' + Poke.height + ' ');
 
+    if (Poke.height >= 1.0) {
+    document.write('- WOW! Thats BIG!!');
+    }
+    document.write('</br>');
+});
+
+document.write('</br>');
+
+// Using the add function to add another pokemon
+pokemonRepository.add({
+    id: 5, name: 'pikachu', type: ['electric'],  HP: 49, Attack: 55, height: 1.5
+})
+
+document.write('</br>');
+
+// Calling the gatAll functrion again to verify it was added
+pokemonRepository.getAll().forEach(Poke => {
+    document.write(`</br>${Poke.name}: </br>ID: ${Poke.id} </br>attack: ${Poke.Attack} </br>type: ${Poke.type} </br>hp: ${Poke.HP} </br>height: ${Poke.height} `);
+
+    if (Poke.height >= 1.0) {
+    document.write('- WOW! Thats BIG!!');
+    }
+    document.write('</br>');
+});
