@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple JS App</title>
-    <link href="./css/styles.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <ul class="pokemon-List"></ul>
-    <script src="./js/promise-polyfill.js"></script>
-    <script src="./js/script.js"></script>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pokedex to be</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+    <body>
+        <div class="pokedex">
+            <h1 class="pokemon-header">Pokedex</h1>
+            <ul class="pokemon-list"></ul>
+        </div>
+        <div class="pokemon-modal"></div>
+        <script src="js/promise-polyfill.js"></script>
+        <script src="js/fetch-polyfill.js"></script>
+        <script src="js/script.js"></script>
+    </body>
 </html>
